@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AzureUtilities
+namespace AzureUtilities.Queues
 {
     [Serializable]
     public class QueueResult

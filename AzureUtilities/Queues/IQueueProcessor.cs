@@ -1,4 +1,4 @@
-﻿namespace AzureUtilities
+﻿namespace AzureUtilities.Queues
 {
     public interface IQueueProcessor
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace AzureUtilities
+namespace AzureUtilities.Queues
 {
     public class QueueMessageArchiveEntry : TableEntity
     {
