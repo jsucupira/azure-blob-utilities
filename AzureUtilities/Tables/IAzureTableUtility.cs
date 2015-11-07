@@ -48,7 +48,7 @@ namespace AzureUtilities.Tables
         /// <param name="partitionKey">The partition key.</param>
         /// <param name="rowKey">The row key.</param>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
-        IEnumerable<T> FindBy<T>(string partitionKey, string rowKey) where T : TableEntity, new();
+        T FindBy<T>(string partitionKey, string rowKey) where T : TableEntity, new();
 
         /// <summary>
         /// Finds the by partition key.

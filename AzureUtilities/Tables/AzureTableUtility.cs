@@ -79,16 +79,19 @@ namespace AzureUtilities.Tables
             return results;
         }
 
-        public IEnumerable<T> FindBy<T>(string partitionKey, string rowKey) where T : TableEntity, new()
+        public T FindBy<T>(string partitionKey, string rowKey) where T : TableEntity, new()
         {
-            // Construct the query operation for all customer entities where PartitionKey="Smith".
-            string filter = TableQuery.CombineFilters(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey)
-                , TableOperators.And, TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, rowKey));
-
-            TableQuery<T> query = new TableQuery<T>().Where(filter);
-
-            // Print the fields for each customer.
-            return Table.ExecuteQuery(query);
+            TableOperation retrieve = TableOperation.Retrieve<T>(partitionKey, rowKey);
+            TableResult result = this.Table.Execute(retrieve);
+            if (result != null)
+            {
+                if (result.HttpStatusCode == 404)
+                {
+                    return default(T);
+                }
+                return (T)result.Result;
+            }
+            return default(T);
         }
 
         public IEnumerable<T> FindByPartitionKey<T>(string partitionKey) where T : TableEntity, new()
