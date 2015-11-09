@@ -24,9 +24,9 @@ namespace AzureUtilities.Tables
         /// <summary>
         /// Deletes the entity.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="tableEntity">The table entity.</param>
-        void DeleteEntity<T>(TableEntity tableEntity) where T : TableEntity, new();
+        /// <param name="partitionKey">The partition key.</param>
+        /// <param name="rowKey">The row key.</param>
+        void DeleteEntity(string partitionKey, string rowKey);
 
         /// <summary>
         /// Deletes the table.

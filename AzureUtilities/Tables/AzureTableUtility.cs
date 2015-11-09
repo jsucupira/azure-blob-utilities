@@ -46,24 +46,17 @@ namespace AzureUtilities.Tables
             return Table.ExecuteBatch(batch);
         }
 
-        public void DeleteEntity<T>(TableEntity tableEntity) where T : TableEntity, new()
+        public void DeleteEntity(string partitionKey, string rowKey)
         {
-            // Create a retrieve operation that expects a customer entity.
-            TableOperation retrieveOperation = TableOperation.Retrieve<T>(tableEntity.PartitionKey, tableEntity.RowKey);
+            DynamicTableEntity entity = new DynamicTableEntity(partitionKey, rowKey);
+            TableOperation retrieve = TableOperation.Retrieve(partitionKey, rowKey);
+            TableResult tableResult = this.Table.Execute(retrieve);
 
-            // Execute the operation.
-            TableResult retrievedResult = Table.Execute(retrieveOperation);
-
-            // Assign the result to a CustomerEntity.
-            TableEntity deleteEntity = (TableEntity) retrievedResult.Result;
-
-            // Create the Delete TableOperation.
-            if (deleteEntity != null)
+            if (tableResult != null && tableResult.Result != null)
             {
-                TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-
-                // Execute the operation.
-                Table.Execute(deleteOperation);
+                entity.ETag = "*";
+                TableOperation delete = TableOperation.Delete(entity);
+                Table.Execute(delete);
             }
         }
 
