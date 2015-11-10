@@ -95,7 +95,7 @@ namespace AzureUtilities.Mock
             Table.Add(key, item);
             return new TableResult
             {
-                HttpStatusCode = (int) HttpStatusCode.OK
+                HttpStatusCode = (int) HttpStatusCode.NoContent
             };
         }
 
@@ -126,7 +126,7 @@ namespace AzureUtilities.Mock
 
             return new TableResult
             {
-                HttpStatusCode = (int) HttpStatusCode.OK
+                HttpStatusCode = (int) HttpStatusCode.NoContent
             };
         }
 
