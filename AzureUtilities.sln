@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Solution Items\nuget.bat = Solution Items\nuget.bat
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureUtilities.Mock", "AzureUtilities.Mock\AzureUtilities.Mock.csproj", "{911E01BD-FC5B-4A76-A344-B62969F6A1BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{6ADA0D27-1BB6-4CAB-AE1D-69E7EC3FB8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ADA0D27-1BB6-4CAB-AE1D-69E7EC3FB8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ADA0D27-1BB6-4CAB-AE1D-69E7EC3FB8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911E01BD-FC5B-4A76-A344-B62969F6A1BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911E01BD-FC5B-4A76-A344-B62969F6A1BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911E01BD-FC5B-4A76-A344-B62969F6A1BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911E01BD-FC5B-4A76-A344-B62969F6A1BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

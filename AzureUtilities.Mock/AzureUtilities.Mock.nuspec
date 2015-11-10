@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Azure Blob Mocks</title>
+    <authors>Jonathas Sucupira</authors>
+    <owners>Jonathas Sucupira</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Azure Mocks for blob storage and table storage</description>
+  </metadata>
+</package>
