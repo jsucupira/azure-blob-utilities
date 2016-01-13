@@ -82,6 +82,7 @@ namespace AzureUtilities.Tables
 
         /// <summary>
         /// Upserts the batch.
+        /// This tends not to work if the count is greated than 100
         /// </summary>
         /// <param name="entities">The entities.</param>
         /// <returns>IList&lt;TableResult&gt;.</returns>
@@ -95,8 +96,16 @@ namespace AzureUtilities.Tables
         /// <returns>TableResult.</returns>
         TableResult Upset<T>(TableEntity tableEntity) where T : TableEntity, new();
 
+        /// <summary>
+        /// Gets or sets the connection string.
+        /// </summary>
+        /// <value>The connection string.</value>
         string ConnectionString { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the table.
+        /// </summary>
+        /// <value>The name of the table.</value>
         string TableName { get; set; }
     }
 }

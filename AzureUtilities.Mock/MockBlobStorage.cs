@@ -29,7 +29,7 @@ namespace AzureUtilities.Mock
         public IEnumerable<string> BlobList()
         {
             CheckContainer();
-            string key = string.Format("BlobStorage|{0}", ContainerName);
+            string key = $"BlobStorage|{ContainerName}";
             List<string> keys = MockValues.GetAllKeys(key);
             List<string> blobNames = new List<string>();
             foreach (string fullKey in keys)
@@ -66,9 +66,9 @@ namespace AzureUtilities.Mock
             else
                 file = new FileInfo(filePath + @"\" + fileName);
 
-            if (file.Directory != null) file.Directory.Create();
+            file.Directory?.Create();
 
-            string key = string.Format("BlobStorage|{0}|{1}", ContainerName, fileName);
+            string key = $"BlobStorage|{ContainerName}|{fileName}";
             object content = MockValues.GetValue(key);
             using (StreamWriter fs = File.CreateText(file.FullName))
                 fs.Write(content);
@@ -77,7 +77,7 @@ namespace AzureUtilities.Mock
         public string DownloadBlobAsText(string fileName)
         {
             CheckContainer();
-            string key = string.Format("BlobStorage|{0}|{1}", ContainerName, fileName);
+            string key = $"BlobStorage|{ContainerName}|{fileName}";
             return MockValues.GetValue(key).ToString();
         }
 
@@ -92,7 +92,7 @@ namespace AzureUtilities.Mock
         public Uri UploadBlob(string content, string blobName)
         {
             CheckContainer();
-            string key = string.Format("BlobStorage|{0}|{1}", ContainerName, blobName);
+            string key = $"BlobStorage|{ContainerName}|{blobName}";
             MockValues.SetValue(key, content);
             return new Uri("http://www.blob.com/" + ContainerName + "/" + blobName);
         }

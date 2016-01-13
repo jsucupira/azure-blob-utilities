@@ -106,7 +106,7 @@ namespace AzureUtilities.Queues
             {
                 //if not process queue message
                 //make ProcessQueueMessageCall
-                queueResult = queueProcessor.ProcessQueueMessage(qMessage.Message);
+                queueResult = queueProcessor.ProcessQueueMessage(qMessage.JsonMessage);
 
                 if (string.IsNullOrEmpty(queueResult.Error))
                 {

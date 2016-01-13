@@ -41,12 +41,12 @@ namespace AzureUtilities.Mock
         
         public IList<TableResult> DeleteBatch(IEnumerable<TableEntity> entities)
         {
-            throw new NotImplementedException();
+            return new List<TableResult>();
         }
 
         public void DeleteEntity(string partitionKey, string rowKey)
         {
-            string key = string.Format("{0}{1}{2}", partitionKey, DELIMITER, rowKey);
+            string key = $"{partitionKey}{DELIMITER}{rowKey}";
             Table.Remove(key);
         }
 
@@ -68,7 +68,7 @@ namespace AzureUtilities.Mock
 
         public T FindBy<T>(string partitionKey, string rowKey) where T : TableEntity, new()
         {
-            string key = string.Format("{0}{1}{2}", partitionKey, DELIMITER, rowKey);
+            string key = $"{partitionKey}{DELIMITER}{rowKey}";
             object value;
             if (Table.TryGetValue(key, out value))
                 return (T) value;
@@ -89,7 +89,7 @@ namespace AzureUtilities.Mock
 
         public TableResult Insert(TableEntity item)
         {
-            string key = string.Format("{0}{1}{2}", item.PartitionKey, DELIMITER, item.RowKey);
+            string key = $"{item.PartitionKey}{DELIMITER}{item.RowKey}";
             item.Timestamp = DateTime.Now;
             Table.Remove(key);
             Table.Add(key, item);
@@ -106,7 +106,7 @@ namespace AzureUtilities.Mock
 
         public void UpdateItem<T>(TableEntity tableEntity) where T : TableEntity, new()
         {
-            string key = string.Format("{0}{1}{2}", tableEntity.PartitionKey, DELIMITER, tableEntity.RowKey);
+            string key = $"{tableEntity.PartitionKey}{DELIMITER}{tableEntity.RowKey}";
             Table[key] = tableEntity;
         }
 
@@ -117,7 +117,7 @@ namespace AzureUtilities.Mock
 
         public TableResult Upset<T>(TableEntity tableEntity) where T : TableEntity, new()
         {
-            string key = string.Format("{0}{1}{2}", tableEntity.PartitionKey, DELIMITER, tableEntity.RowKey);
+            string key = $"{tableEntity.PartitionKey}{DELIMITER}{tableEntity.RowKey}";
 
             if (Table.ContainsKey(key))
                 UpdateItem<T>(tableEntity);

@@ -8,8 +8,8 @@ namespace AzureUtilities.Queues
         public QueueMessageArchiveEntry()
         {
             DateTime now = DateTime.UtcNow;
-            PartitionKey = $"{now:yyyy-MM}";
-            RowKey = $"{now:dd HH:mm:ss.fff}-{Guid.NewGuid()}";
+            PartitionKey = $"{now:yyyy-MM-DD}";
+            RowKey = Guid.NewGuid().ToString();
         }
 
         public string Message { get; set; }

@@ -18,7 +18,5 @@ set /p "version=Enter version number: "
 :versionCheck
 if "%version%"=="" goto :versionPrompt
 
-set nugetPath="\\Oshfms04\it\HiDRA\Nuget\%package%" 
-
 ..\.nuget\nuget pack ..\%package%\%package%.csproj -Prop Configuration=Release -includereferencedprojects -Version %version%
 pause
